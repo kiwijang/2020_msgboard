@@ -183,7 +183,7 @@ conn.php 為連線資訊 action
 
 痾 我忘記 huli 說分頁有幾種了xdddd(拍額頭)
 
-這是利用 limit 和 offset 來對 mysql
+這是利用 limit 和 offset 來對 mysql 進行 query
 
 一頁 5 筆，
 
