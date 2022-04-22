@@ -5,12 +5,19 @@ php 留言板
 # 規格書
 
 一個 php ssr (server side render) + mysql 的留言板
+
 總共 3 種角色(roles): 管理員、使用者、被鎖的使用者
+
 總共 5 種功能(features):(對自己)新增自己的留言、刪除自己的留言、編輯自己的留言、(對別人)刪除他人的留言、編輯他人的留言
+
 透過「角色(role)」來管理「功能(feature)」的使用權限
+
 也就是帳號根據對應角色取得使用功能的權限:
+
 帳號 -> 角色 -> 功能
+
 所有人要登入後才可留言，但所有人都可看到所有留言
+
 管理者可透過 UI 設定其他人的權限，自己的權限只能透過 DB 設定
 
 ![](imgs/2l5MnJy.png)
@@ -45,10 +52,13 @@ php 留言板
 透過 cookie 管理登入資料
 
 登入成功後會將 username 和 featuresId 存到 cookie 裡，
+
 使用任一功能錢都會先使用 cookie 內 featureId 檢查可否使用此功能(feature)
 
 是 PHP 提供的方法，前端只會有 sessionId，前端不能自行修改 cookie 資料
+
 除非用此 sessionId 到伺服器的某個地方找到對應的 cookie 資料，就算找到了也是加密過的，php 解密後才能看懂，所以駭客要看到 cookie 內資料很困難
+
 ![](imgs/rGBjt7n.png)
 
 ```php
@@ -90,8 +100,11 @@ https://www.gushiciku.cn/pl/pOFW/zh-tw
 ![](imgs/8mr2j78.png)
 
 comments table 會記錄帳號位置的網域(origin)xD(變態)
+
 users 和 comments table 都會記錄新增時間(created_at)
+
 因為是 timestamp 類型，所以新增時會讓資料庫自己壓更新日期，
+
 不用特別寫程式給時間
 
 roles_features 和 users_roles 為多對多關聯用的表
@@ -159,6 +172,7 @@ utils.php 提供 11 個方法可用
 ![](imgs/CA1bAcL.png)
 
 只有四個頁面(打勾的檔案)，其他都是 action
+
 conn.php 為連線資訊 action
 
 ![](imgs/rOBPM6d.png)
@@ -172,7 +186,9 @@ conn.php 為連線資訊 action
 這是利用 limit 和 offset 來對 mysql
 
 一頁 5 筆，
+
 將目前頁面記在 url 上(因為這樣頁面重整後才知道目前在哪頁)
+
 然後 offset 目前頁 - 1 再取 limit 5 筆出來
 
 ```php
@@ -198,8 +214,11 @@ conn.php 為連線資訊 action
 ## 小結
 
 寫完這個很有成就感
+
 真的超感謝 huli
+
 希望情緒控管跟腦袋可以以他為目標繼續努力QQ
+
 還提供了 FTP 和 mysql 供大家做連結QQ
 
 http://mentor-program.co/mtr04group1/naomi/hw1/index.php
