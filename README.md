@@ -53,7 +53,7 @@ php 留言板
 
 登入成功後會將 username 和 featuresId 存到 cookie 裡，
 
-使用任一功能錢都會先使用 cookie 內 featureId 檢查可否使用此功能(feature)
+使用任一功能前都會先使用 cookie 內 featureId 檢查可否使用此功能(feature)
 
 是 PHP 提供的方法，前端只會有 sessionId，前端不能自行修改 cookie 資料
 
@@ -180,8 +180,6 @@ conn.php 為連線資訊 action
 ## 不用記 Log (不用稽核)
 
 ## 分頁
-
-痾 我忘記 huli 說分頁有幾種了xdddd(拍額頭)
 
 這是利用 limit 和 offset 來對 mysql 進行 query
 
